@@ -7,7 +7,7 @@ def run
   if operator != "sqrt"
     puts "Now the second number!"
     n2 = get_integer
-  else
+  els{e
     n2 = 1
   end
   answer = print_and_return_result(operator, n1, n2)
@@ -41,7 +41,7 @@ end
 
 def operate_on_answer(answer)
   answer = float_or_int(answer)
-  operator=get_operator
+  operator = get_operator
   puts "With what other number?"
   n1 = get_integer
   print_and_return_result(operator, answer, n1)
@@ -51,7 +51,7 @@ def get_operator
   puts "What operation are we performing?"
   operations = ["+","-", "/", "*", "%", "**", "sqrt"]
   operator = "Placeholder"
-  while !(operations.include? operator)
+  until (operations.include? operator)
     print "> "
     operator = gets.chomp.downcase
     case operator
@@ -96,18 +96,28 @@ def get_integer
 end
 
 def float_or_int(number)
-  puts "Should #{number} be a float or interger?"
-  answer = gets.chomp
-  case answer
-  when "f", /float/
-    return number.to_f
-  when "i", /int/
+  if number.to_i > 10000
     return number.to_i
   else
-    puts "Not sure what you mean. I'll default to Interger."
-    return number.to_i
+    return number.to_f
   end
 end
+
+
+# This will just always ask user for their preference f vs i
+#
+#   puts "Should #{number} be a float or interger?"
+#   answer = gets.chomp
+#   case answer
+#   when "f", /float/
+#     return number.to_f
+#   when "i", /int/
+#     return number.to_i
+#   else
+#     puts "Not sure what you mean. I'll default to Interger."
+#     return number.to_i
+#   end
+# end
 
 def calculate(f, a, b)
   case f
